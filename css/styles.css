@@ -1,7 +1,7 @@
 
 /* ======================================
    Sara Almugbel - Portfolio
-   Assignment 3: Advanced Functionality
+   Assignment 4: Personal Web Application.
    ====================================== */
 
 /* Theme Colors */
@@ -334,3 +334,193 @@ footer p {
   }
 }
 
+
+/* ======================================
+   Assignment 4: Personal Web Application
+   ====================================== */
+
+/* Hero Action Buttons */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.primary-link,
+.secondary-link {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.primary-link {
+  background: var(--accent);
+  color: var(--background);
+}
+
+.secondary-link {
+  background: transparent;
+  color: var(--accent);
+}
+
+.primary-link:hover,
+.secondary-link:hover {
+  transform: translateY(-3px);
+}
+
+.secondary-link:hover {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Technical Skills Section */
+#skills h2 {
+  color: var(--accent);
+  font-size: 2rem;
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.skill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 20px #00000012;
+  transition: transform 0.2s;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+}
+
+.skill-card h3 {
+  color: var(--accent);
+  margin-top: 0;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tags span {
+  background: var(--background);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Live Project Search */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 650px;
+  margin-top: 25px;
+}
+
+.search-container input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 14px;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.search-container input::placeholder {
+  color: var(--muted);
+}
+
+/* GitHub Repository Language */
+.repo-language {
+  display: inline-block;
+  background: var(--background);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin: 5px 0 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+#github-repos .project-card {
+  overflow-wrap: anywhere;
+}
+
+#github-repos .project-card a {
+  display: block;
+}
+
+/* Back to Top Button */
+#back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px #00000030;
+  z-index: 20;
+}
+
+#back-to-top[hidden] {
+  display: none;
+}
+
+/* Improved Mobile Layout */
+@media (max-width: 700px) {
+  html {
+    scroll-padding-top: 190px;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  nav ul {
+    gap: 12px;
+  }
+
+  #back-to-top {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .primary-link:hover,
+  .secondary-link:hover,
+  .skill-card:hover {
+    transform: none;
+  }
+}

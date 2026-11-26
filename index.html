@@ -20,6 +20,7 @@
 
       <ul>
         <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#github-projects">GitHub</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -45,6 +46,65 @@
         I enjoy learning new programming languages and
         developing my technical skills.
       </p>
+
+      <!-- Assignment 4: Hero Buttons -->
+      <div class="hero-actions">
+        <a href="#projects" class="primary-link">Explore My Projects</a>
+        <a href="#contact" class="secondary-link">Contact Me</a>
+      </div>
+    </section>
+
+    <!-- Assignment 4: Technical Skills -->
+    <section id="skills">
+      <h2>My Technical Skills</h2>
+
+      <p>
+        Technologies and concepts I have explored throughout
+        my software engineering studies.
+      </p>
+
+      <div class="skills-container">
+
+        <article class="skill-card">
+          <h3>Front-End Development</h3>
+          <div class="skill-tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>React</span>
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <h3>Programming</h3>
+          <div class="skill-tags">
+            <span>Java</span>
+            <span>Python</span>
+            <span>Object-Oriented Programming</span>
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <h3>Back-End &amp; Databases</h3>
+          <div class="skill-tags">
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>SQL</span>
+            <span>MongoDB</span>
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <h3>Development Tools</h3>
+          <div class="skill-tags">
+            <span>Git</span>
+            <span>GitHub</span>
+            <span>VS Code</span>
+            <span>REST APIs</span>
+          </div>
+        </article>
+
+      </div>
     </section>
 
     <!-- Projects -->
@@ -52,8 +112,20 @@
       <h2>My Project Ideas &amp; Future Innovations</h2>
 
       <p>
-        Explore my project ideas using the category buttons below.
+        Explore my project ideas using search, category filters,
+        and sorting options.
       </p>
+
+      <!-- Assignment 4: Live Project Search -->
+      <div class="search-container">
+        <label for="project-search">Search projects:</label>
+        <input
+          type="search"
+          id="project-search"
+          placeholder="Search by project name or description..."
+          autocomplete="off"
+        >
+      </div>
 
       <!-- Project Filters -->
       <div class="filters" role="group" aria-label="Project filters">
@@ -188,6 +260,17 @@
     </section>
 
   </main>
+
+  <!-- Assignment 4: Back to Top Button -->
+  <button
+    id="back-to-top"
+    type="button"
+    aria-label="Back to top"
+    title="Back to top"
+    hidden
+  >
+    ↑
+  </button>
 
   <!-- Footer -->
   <footer>

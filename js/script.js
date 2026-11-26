@@ -1,7 +1,7 @@
 
 /* ======================================
    Sara Almugbel - Portfolio
-   Assignment 3: Advanced Functionality
+   Assignment 4: Personal Web Application
    ====================================== */
 
 "use strict";
@@ -53,10 +53,11 @@ themeButton.addEventListener("click", () => {
 // ======================================
 // FEATURE 2: PROJECT FILTERING
 // FEATURE 3: PROJECT SORTING
+// FEATURE 6: LIVE PROJECT SEARCH
 // ======================================
 
-// Both features use the same project container
 const projectsContainer = document.getElementById("project-list");
+
 const projectCards = Array.from(
   projectsContainer.querySelectorAll(".project-card")
 );
@@ -64,6 +65,7 @@ const projectCards = Array.from(
 const filterButtons = document.querySelectorAll("#projects .filter");
 const projectSort = document.getElementById("project-sort");
 const projectStatus = document.getElementById("projects-status");
+const projectSearch = document.getElementById("project-search");
 
 // Preserve the original project order
 const originalProjects = [...projectCards];
@@ -71,9 +73,10 @@ const originalProjects = [...projectCards];
 // Keep track of the selected category
 let selectedCategory = "all";
 
-// Apply filtering and sorting together
+// Apply filtering, sorting and searching together
 function updateProjects() {
   const sortOption = projectSort.value;
+  const searchQuery = projectSearch.value.trim().toLowerCase();
 
   // Create a copy so the original order is preserved
   const sortedProjects = [...originalProjects];
@@ -102,11 +105,18 @@ function updateProjects() {
 
   let visibleProjects = 0;
 
-  // Show only projects matching the selected category
+  // Apply category filtering and live search
   projectCards.forEach((card) => {
-    const matches =
+
+    const matchesCategory =
       selectedCategory === "all" ||
       card.dataset.category === selectedCategory;
+
+    const projectText = card.textContent.toLowerCase();
+
+    const matchesSearch = projectText.includes(searchQuery);
+
+    const matches = matchesCategory && matchesSearch;
 
     card.hidden = !matches;
 
@@ -118,7 +128,7 @@ function updateProjects() {
   // Update the accessible status message
   projectStatus.textContent =
     visibleProjects === 0
-      ? "No projects found. Please select another category."
+      ? "No projects found. Try another search or category."
       : `Showing ${visibleProjects} project(s).`;
 }
 
@@ -140,6 +150,9 @@ filterButtons.forEach((button) => {
 
 // Handle sorting dropdown
 projectSort.addEventListener("change", updateProjects);
+
+// Assignment 4: Update results as the visitor types
+projectSearch.addEventListener("input", updateProjects);
 
 // Display projects when the page first loads
 updateProjects();
@@ -244,8 +257,8 @@ async function loadGitHubProjects() {
 
     const repositories = await response.json();
 
-    // Remove previously displayed repository cards
-    githubRepos.replaceChildren();
+    // Create cards before inserting them into the page
+    const fragment = document.createDocumentFragment();
 
     repositories.forEach((repo) => {
       const card = document.createElement("article");
@@ -258,15 +271,23 @@ async function loadGitHubProjects() {
       description.textContent =
         repo.description || "No description available.";
 
+      // Assignment 4: Display the repository language
+      const language = document.createElement("span");
+      language.className = "repo-language";
+      language.textContent = repo.language || "Not specified";
+
       const link = document.createElement("a");
       link.href = repo.html_url;
       link.textContent = "View on GitHub";
       link.target = "_blank";
       link.rel = "noopener noreferrer";
 
-      card.append(title, description, link);
-      githubRepos.appendChild(card);
+      card.append(title, description, language, link);
+      fragment.appendChild(card);
     });
+
+    // Insert all repository cards together
+    githubRepos.replaceChildren(fragment);
 
     githubStatus.textContent =
       repositories.length > 0
@@ -283,3 +304,35 @@ async function loadGitHubProjects() {
 
 // Load repositories when the page opens
 loadGitHubProjects();
+
+
+// ======================================
+// FEATURE 7: BACK TO TOP BUTTON
+// ======================================
+
+const backToTop = document.getElementById("back-to-top");
+
+// Show the button after scrolling down
+function updateBackToTop() {
+  backToTop.hidden = window.scrollY < 300;
+}
+
+window.addEventListener("scroll", updateBackToTop, {
+  passive: true
+});
+
+// Check the initial scroll position
+updateBackToTop();
+
+// Return to the top of the page
+backToTop.addEventListener("click", () => {
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  window.scrollTo({
+    top: 0,
+    behavior: reducedMotion ? "instant" : "smooth"
+  });
+});
