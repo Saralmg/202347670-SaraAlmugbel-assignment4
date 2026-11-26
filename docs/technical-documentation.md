@@ -1,18 +1,22 @@
 
-# Technical Documentation – Assignment 3
+# Technical Documentation – Assignment 4
 
 **Student:** Sara Almugbel  
 **Student ID:** 202347670  
-**Course Project:** Advanced Interactive Personal Portfolio
+**Course:** SWE 363 – Web Engineering  
+**Project:** Personal Portfolio Web Application
 
 ## 1. Project Overview
 
-Assignment 3 extends my personal portfolio website from Assignments 1 and 2 by introducing advanced JavaScript functionality, external API integration, improved form validation, and project sorting.
+Assignment 4 represents the final development stage of my personal portfolio website.
 
-The website includes four main sections:
+The application builds upon the previous three assignments by preserving existing interactive functionality and introducing new features, professional design improvements, performance optimization, and public deployment.
+
+The website consists of five main sections:
 
 - About Me
-- Project Ideas
+- Technical Skills
+- Project Ideas and Future Innovations
 - GitHub Projects
 - Contact
 
@@ -22,179 +26,258 @@ The application uses HTML, CSS, and vanilla JavaScript without requiring a front
 
 ### HTML5
 
-Provides the website structure, including navigation, semantic sections, project cards, filter buttons, sorting controls, and the contact form.
+Provides semantic website structure, navigation, project cards, skill cards, search controls, and contact form elements.
 
 ### CSS3
 
-Controls the appearance, layout, responsive design, hover effects, and dark/light themes.
+Controls the visual appearance, responsive layouts, animations, accessibility preferences, and theme colors.
 
 CSS Grid and Flexbox are used to organize the interface.
 
 ### JavaScript (ES6+)
 
-Handles DOM manipulation, event listeners, project filtering, sorting, theme switching, form validation, and API requests.
+Implements event handling, DOM manipulation, project search, filtering, sorting, theme switching, form validation, API integration, and scrolling functionality.
 
 ### Fetch API
 
-Allows JavaScript to request external data asynchronously.
+Retrieves external data asynchronously.
 
 ### GitHub REST API
 
-Provides public repository information, including repository names, descriptions, and links.
+Provides public repository information, including names, descriptions, programming languages, and repository links.
 
 ### localStorage
 
-Stores the visitor's selected theme in the browser so the preference can be restored after refreshing.
+Stores the selected theme preference across page reloads.
+
+### GitHub Pages
+
+Hosts the completed portfolio as a publicly accessible static website.
 
 ## 3. Application Architecture
 
-The application consists of three main files:
+The application follows a simple client-side architecture.
 
-- `index.html` – Defines the website structure.
-- `css/styles.css` – Defines the visual appearance and responsive layouts.
-- `js/script.js` – Implements interactive functionality.
+```text
+Visitor's Browser
+       |
+       v
+   index.html
+       |
+       +------ css/styles.css
+       |
+       +------ js/script.js
+                    |
+                    +------ DOM Manipulation
+                    +------ Event Handling
+                    +------ localStorage
+                    +------ Form Validation
+                    +------ GitHub REST API
+```
 
-The JavaScript file is organized into clearly labeled feature sections.
+The three main application files have separate responsibilities:
 
-The script is loaded using the `defer` attribute, allowing the HTML to be parsed before the JavaScript executes.
+| File | Responsibility |
+|---|---|
+| index.html | Website structure and content |
+| css/styles.css | Styling, layout, and responsiveness |
+| js/script.js | Interactive behavior and API integration |
 
-This ensures that the required DOM elements are available when the event listeners are registered.
+JavaScript is loaded using the defer attribute, allowing the HTML document to be parsed before the script executes.
+
+This ensures that the required DOM elements are available when event listeners are registered.
 
 ## 4. Interactive Features
 
 ### 4.1 Dark and Light Mode
 
-The theme button allows users to switch between dark and light appearances.
+The theme button allows visitors to switch between light and dark appearances.
 
-JavaScript uses:
+JavaScript changes the dark class on the body element:
 
-`document.body.classList.toggle("dark")`
+```javascript
+document.body.classList.toggle("dark");
+```
 
-CSS variables define the colors used by each theme.
+CSS variables define the colors associated with each theme.
 
-The selected preference is saved using:
+The selected theme is saved using:
 
-`localStorage.setItem("portfolio-theme", selectedTheme)`
+```javascript
+localStorage.setItem("portfolio-theme", selectedTheme);
+```
 
-When the page loads, JavaScript retrieves the saved preference using `localStorage.getItem()`.
+When the website loads, the saved preference is retrieved using localStorage.getItem().
 
-If browser storage is unavailable, the theme button can still change the appearance for the current session.
+The theme button also updates its text and aria-pressed attribute.
 
-The button also updates its `aria-pressed` attribute to reflect its state.
+Storage operations are protected using try/catch blocks.
 
-### 4.2 Dynamic Project Filtering
+### 4.2 Technical Skills Section
 
-The Projects section includes three filter buttons:
+Assignment 4 introduces a dedicated technical skills section.
+
+Skills are organized into four categories:
+
+- Front-End Development
+- Programming
+- Back-End and Databases
+- Development Tools
+
+CSS Grid organizes the skill cards, while Flexbox allows individual technology badges to wrap naturally.
+
+The layout changes to one column on smaller screens.
+
+### 4.3 Hero Navigation Buttons
+
+The introduction section contains two navigation buttons:
+
+- Explore My Projects
+- Contact Me
+
+These buttons use internal anchor links to navigate to the corresponding sections.
+
+CSS provides consistent styling and hover effects.
+
+### 4.4 Project Filtering
+
+Project cards contain data-category attributes that identify their categories.
+
+Available categories include:
 
 - All
 - Productivity
 - Campus
 
-Each project card contains a `data-category` attribute.
+The selected category is stored in the selectedCategory variable.
 
-For example:
+JavaScript compares each project's category with the selected filter.
 
-```html
-<article class="project-card" data-category="campus">
-```
+Nonmatching cards are hidden using the hidden property.
 
-JavaScript reads the selected filter using `dataset.filter`.
+### 4.5 Project Sorting
 
-The selected category is stored in the `selectedCategory` variable.
-
-Each card is compared with the selected category.
-
-Nonmatching cards are hidden using:
-
-`card.hidden = !matches;`
-
-The CSS rule `.project-card[hidden]` ensures hidden cards are not displayed.
-
-A status message indicates how many projects are visible.
-
-### 4.3 Project Sorting
-
-Assignment 3 introduces a sorting dropdown with three options:
+The sorting dropdown provides three options:
 
 - Default Order
 - Name (A–Z)
 - Name (Z–A)
 
-JavaScript stores the original project cards in an array:
+The original project order is preserved using:
 
 ```javascript
 const originalProjects = [...projectCards];
 ```
 
-When the user changes the sorting option, JavaScript creates a copy of the original array.
+The application creates a copy of the original array before sorting.
 
-For alphabetical sorting, the program uses the `sort()` method and `localeCompare()` to compare project names.
+The sort() and localeCompare() methods are used to compare project names alphabetically.
 
-For example:
+Existing project cards are rearranged using appendChild() rather than recreated.
+
+### 4.6 Live Project Search
+
+Live project search is a new feature introduced in Assignment 4.
+
+The search field is connected to an input event listener:
 
 ```javascript
-sortedProjects.sort((a, b) => {
-  const nameA = a.querySelector("h3").textContent.trim();
-  const nameB = b.querySelector("h3").textContent.trim();
-
-  return nameA.localeCompare(nameB);
-});
+projectSearch.addEventListener("input", updateProjects);
 ```
 
-The sorted cards are then rearranged inside the project container using `appendChild()`.
+The search query is normalized using:
 
-The original DOM elements are reused rather than recreated.
+```javascript
+const searchQuery = projectSearch.value.trim().toLowerCase();
+```
 
-### 4.4 Combining Filtering and Sorting
+The application converts each project's text to lowercase and checks whether it contains the search query:
 
-Filtering and sorting are managed by a shared function:
+```javascript
+const projectText = card.textContent.toLowerCase();
+const matchesSearch = projectText.includes(searchQuery);
+```
 
-`updateProjects()`
+This provides case-insensitive searching across project names and descriptions.
 
-This function performs the following operations:
+Results update immediately without requiring a separate search button.
+
+### 4.7 Combined Search, Filtering, and Sorting
+
+The updateProjects() function manages all three project operations.
+
+The function performs the following steps:
 
 1. Reads the selected sorting option.
-2. Creates a copy of the original project array.
-3. Sorts the copied array when required.
-4. Rearranges the project cards in the DOM.
-5. Applies the selected category filter.
-6. Updates the number of visible projects.
+2. Reads and normalizes the search query.
+3. Creates a copy of the original project array.
+4. Sorts the project cards when required.
+5. Rearranges existing cards in the project container.
+6. Checks whether each card matches the selected category.
+7. Checks whether each card matches the search query.
+8. Displays only cards satisfying both conditions.
+9. Updates the visible project count.
 
-Both filter buttons and the sorting dropdown call the same function.
+The combined condition is:
 
-This design ensures that filtering and sorting work together without conflicting.
+```javascript
+const matches = matchesCategory && matchesSearch;
+card.hidden = !matches;
+```
 
-### 4.5 Advanced Contact Form Validation
+Using one shared function prevents conflicts between the three features and reduces duplicated code.
 
-The contact form contains three fields:
+### 4.8 Contact Form Validation
+
+The contact form contains three input fields:
 
 - Name
 - Email
 - Message
 
-JavaScript listens for the form's `submit` event.
+JavaScript listens for the submit event and prevents the default submission behavior using:
 
-`event.preventDefault()` prevents the browser from submitting the form and refreshing the page.
+```javascript
+event.preventDefault();
+```
 
-The validation rules are:
+The validation requirements are:
 
-1. All fields must contain nonempty values.
-2. The name must contain at least 2 characters.
-3. The email must match a basic email-format pattern.
-4. The message must contain at least 10 characters.
-5. Field values must not exceed the specified maximum lengths.
+| Field | Validation |
+|---|---|
+| Name | Required, 2–80 characters |
+| Email | Required, basic email format, maximum 254 characters |
+| Message | Required, 10–2000 characters |
 
-The email validation uses the regular expression:
+The email format is checked using a regular expression:
 
 ```javascript
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 ```
 
-The `showFormMessage()` function displays error or success messages.
+The showFormMessage() function displays appropriate error or success messages.
 
-If the input is valid, the form displays a confirmation message and resets the fields.
+After successful validation, the form fields are reset.
 
-The form is a client-side demonstration and does not transmit messages to a server.
+The contact form does not send information to a backend server.
+
+### 4.9 Back-to-Top Button
+
+The back-to-top button improves navigation on longer pages.
+
+The application listens for scrolling events and checks the current scroll position:
+
+```javascript
+backToTop.hidden = window.scrollY < 300;
+```
+
+The button becomes visible after the visitor scrolls at least 300 pixels.
+
+The scroll listener uses the passive option.
+
+When clicked, the button calls window.scrollTo() to return to the top.
+
+The application checks the visitor's reduced-motion preference before selecting the scrolling behavior.
 
 ## 5. External API Integration
 
@@ -202,198 +285,339 @@ The form is a client-side demonstration and does not transmit messages to a serv
 
 The GitHub REST API was selected because it provides publicly accessible information about software repositories.
 
-It allows the portfolio to display current repository information without manually updating HTML cards.
+It allows the website to display current project information without manually updating repository cards.
 
 ### 5.2 API Endpoint
 
-The application sends a GET request to:
+The application sends an HTTP GET request to:
 
 ```text
 https://api.github.com/users/Saralmg/repos?sort=updated&per_page=6
 ```
 
-The endpoint requests up to six public repositories, ordered by their latest updates.
+The endpoint requests up to six public repositories ordered by their latest updates.
 
-### 5.3 Fetching Data
+No private API credentials are included in the source code.
 
-The application uses an asynchronous function named `loadGitHubProjects()`.
+### 5.3 Asynchronous Data Retrieval
 
-The function sends a request using `fetch()`:
+The loadGitHubProjects() function uses async/await and fetch() to retrieve repository information.
+
+The response is checked using response.ok before being processed.
+
+The JSON response is converted into JavaScript objects using:
 
 ```javascript
-const response = await fetch(
-  "https://api.github.com/users/Saralmg/repos?sort=updated&per_page=6"
-);
+const repositories = await response.json();
 ```
 
-The application checks `response.ok` before processing the response.
+### 5.4 Dynamic Repository Rendering
 
-The response body is converted into JavaScript objects using:
+For each repository, JavaScript creates:
 
-`await response.json()`
-
-### 5.4 Displaying Repository Information
-
-For each repository, JavaScript dynamically creates:
-
-- An article element for the repository card
+- An article element
 - A heading containing the repository name
-- A paragraph containing the repository description
-- A link to the repository on GitHub
+- A paragraph containing the description
+- A programming language badge
+- A link to the repository
 
-The application uses `textContent` to insert repository names and descriptions as plain text.
+Assignment 4 introduces programming language information using:
 
-Repository links open in a new tab and use `rel="noopener noreferrer"`.
+```javascript
+language.textContent = repo.language || "Not specified";
+```
 
-### 5.5 API Error Handling
+Repository names and descriptions are inserted using textContent rather than innerHTML.
 
-The API request is placed inside a `try...catch` block.
+External repository links use target="_blank" and rel="noopener noreferrer".
 
-If the request fails or GitHub returns an unsuccessful response, the application displays:
+### 5.5 DocumentFragment Optimization
 
-"Unable to load GitHub projects. Please try again later."
+Assignment 4 improves repository rendering by using a DocumentFragment.
 
-The error is also logged using `console.error()`.
+```javascript
+const fragment = document.createDocumentFragment();
+```
 
-If the API returns an empty repository list, the application displays a message indicating that no public repositories were found.
+Repository cards are added to the fragment before being inserted into the website.
 
-## 6. State Management and Persistence
+```javascript
+githubRepos.replaceChildren(fragment);
+```
 
-The application manages two types of state.
+This groups DOM insertion into a single operation instead of inserting each card separately into the visible document.
 
-### Persistent Theme State
+### 5.6 API Error Handling
 
-The selected theme is stored in localStorage and restored when the page reloads.
+The API request is protected using a try/catch block.
 
-### Temporary Project State
+The website provides messages for:
 
-The selected project category is stored in the `selectedCategory` variable.
+- Loading repositories
+- Successfully loaded repositories
+- Empty repository results
+- Network or API failures
 
-The sorting option is read from the dropdown element.
+Errors are also recorded using console.error().
 
-Filtering and sorting state are maintained while the page remains open, but are not saved across page reloads.
+## 6. State Management
 
-## 7. Performance and Code Quality
+The application manages persistent and temporary state.
 
-The application uses several techniques to maintain simple and efficient code.
+### Persistent State
 
-### 7.1 Reusing DOM Elements
+The selected light or dark theme is stored in localStorage.
 
-Sorting rearranges existing project cards instead of creating new cards every time.
+This preference remains available after refreshing the website.
 
-This reduces unnecessary element creation.
+### Temporary State
 
-### 7.2 Preserving Original Project Order
+Temporary state includes:
 
-The original project array is stored once.
+- Selected project category
+- Selected sorting option
+- Current search query
+- Current contact form input
+- Back-to-top button visibility
 
-Sorting operates on a copy of this array, allowing the default order to be restored.
+These values are maintained while the website is open but are not permanently stored.
 
-### 7.3 Asynchronous API Requests
+## 7. Responsive Design
 
-The GitHub API is requested asynchronously using `async/await`.
+The website uses CSS Grid and Flexbox to support different screen sizes.
 
-This avoids blocking the page while waiting for the network response.
+A media query at max-width: 700px adjusts the layout for smaller screens.
 
-### 7.4 Limited API Results
+Responsive improvements include:
 
-The `per_page=6` query parameter limits the number of repositories requested.
+- Single-column project cards
+- Single-column technical skill cards
+- Wrapping navigation links
+- Vertically arranged hero buttons
+- Full-width search input
+- Adjusted section spacing
+- Repositioned back-to-top button
+- Flexible contact form layout
 
-This reduces the amount of repository data processed and displayed.
+Long GitHub repository names are handled using overflow-wrap to reduce horizontal overflow.
 
-### 7.5 Shared Update Function
+## 8. Accessibility
 
-The `updateProjects()` function handles both filtering and sorting.
+Accessibility features include:
 
-This reduces duplicated logic and makes the code easier to maintain.
+- Semantic HTML elements
+- Descriptive form labels
+- Keyboard focus indicators
+- Accessible button names
+- aria-pressed attributes for theme and filter controls
+- aria-live status messages
+- Reduced-motion support
+- Responsive layouts
 
-### 7.6 Safe Text Rendering
+The prefers-reduced-motion media query disables unnecessary animations and transitions when requested by the visitor.
 
-GitHub repository names and descriptions are inserted using `textContent` rather than `innerHTML`.
+## 9. Performance and Code Quality
 
-This prevents repository text from being interpreted as HTML.
+The application uses several techniques to improve efficiency and maintainability.
 
-## 8. Animations and Transitions
+### 9.1 Lightweight Architecture
 
-CSS transitions improve the user experience.
+The website uses vanilla JavaScript without additional frontend frameworks or libraries.
 
-Examples include:
+### 9.2 Deferred JavaScript
 
-- Button hover effects
-- Project card hover effects
-- Smooth theme color transitions
-- Smooth navigation scrolling
+The defer attribute allows the HTML document to be parsed before JavaScript executes.
 
-The website respects reduced-motion preferences through the `prefers-reduced-motion` media query.
+### 9.3 DOM Element Reuse
 
-## 9. Error Handling and User Feedback
+Project sorting rearranges existing DOM elements rather than generating replacement cards.
 
-The application provides feedback through:
+### 9.4 Shared Application Logic
 
-- Required-field validation messages
-- Invalid email messages
-- Minimum-length validation messages
-- Maximum-length validation messages
-- Successful form validation confirmation
-- Project filtering status messages
-- Empty project result messages
-- GitHub API loading and error messages
-- Console warnings if localStorage is unavailable
+The updateProjects() function manages searching, filtering, and sorting.
 
-Status messages use `role="status"` and `aria-live="polite"` to support accessibility.
+### 9.5 Asynchronous API Requests
 
-## 10. Responsive Design
+The website retrieves GitHub data asynchronously without blocking the main page while waiting for the response.
 
-The website uses CSS Grid and Flexbox.
+### 9.6 Limited API Results
 
-Project cards are displayed in two columns on wider screens.
+The per_page=6 parameter limits the amount of repository data retrieved.
 
-A media query at `max-width: 700px` changes the project grid to one column.
+### 9.7 Grouped DOM Insertion
 
-Navigation elements can wrap to fit smaller screens.
+DocumentFragment groups repository card insertion into one operation.
 
-Sorting controls also adjust their layout on mobile devices.
+### 9.8 Organized Source Code
 
-## 11. Testing
+The JavaScript file contains labeled feature sections and explanatory comments.
 
-The following functionality was manually verified during development:
+CSS variables maintain consistent theme colors.
+
+## 10. Testing and Verification
+
+### 10.1 Functional Testing
+
+The following tests were manually performed during Assignment 4 development.
 
 | Test | Expected Result | Result |
 |---|---|---|
-| Dark mode | Switch to dark theme | Passed |
-| Theme persistence | Retain dark mode after refresh | Passed |
-| Productivity filter | Show Smart Study Planner only | Passed |
-| Campus filter | Show Campus Connect only | Passed |
-| All filter | Show both projects | Passed |
-| A–Z sorting | Show Campus Connect first | Passed |
-| Filtering and sorting | Both features work together | Passed |
-| Valid contact form | Display confirmation | Passed |
-| GitHub API | Display public repositories | Passed |
+| Technical skills | Skill cards display correctly | Passed |
+| Explore Projects button | Navigate to Projects | Passed |
+| Contact button | Navigate to Contact | Passed |
+| Search Smart | Display Smart Study Planner | Passed |
+| Search Campus | Display Campus Connect | Passed |
+| Search xyz | Display no-results message | Passed |
+| Clear search | Restore both project cards | Passed |
+| Filtering and sorting | Operate together | Passed |
+| GitHub language badges | Display repository languages | Passed |
+| Theme persistence | Retain theme after refresh | Passed |
+| Back-to-top button | Return to top of page | Passed |
+| Contact validation | Display validation feedback | Passed |
 
-Additional validation edge cases, API failure scenarios, and mobile layouts should be tested before final submission.
+### 10.2 Browser Compatibility
 
-## 12. Limitations
+The website was manually tested in:
 
+- Safari
+- Google Chrome
+
+The tested interactive features operated successfully.
+
+### 10.3 Responsive Testing
+
+The browser window was resized to evaluate the layout on smaller screens.
+
+The navigation, project cards, technical skills section, and contact form adjusted to the available width.
+
+### 10.4 Performance Testing
+
+Google PageSpeed Insights was used on November 26, 2026, to evaluate the deployed website.
+
+| Evaluation Category | Mobile | Desktop |
+|---|---:|---:|
+| Performance | 100 | 100 |
+| Accessibility | 100 | 100 |
+| Best Practices | 100 | 100 |
+| SEO | 100 | 100 |
+
+The results demonstrate strong performance under the reported laboratory testing conditions.
+
+These scores may vary depending on network conditions, browser settings, and future website changes.
+
+Real-user performance data was not available in the mobile report.
+
+## 11. Deployment
+
+The completed application was deployed using GitHub Pages.
+
+### Repository
+
+https://github.com/Saralmg/202347670-SaraAlmugbel-assignment4
+
+### Live Website
+
+https://saralmg.github.io/202347670-SaraAlmugbel-assignment4/
+
+### Deployment Configuration
+
+- Deployment source: Deploy from a branch
+- Branch: main
+- Folder: / (root)
+
+GitHub Pages serves the static HTML, CSS, and JavaScript files directly.
+
+No separate backend server is required.
+
+The deployed website was opened and its functionality was manually verified.
+
+## 12. Innovation
+
+The main innovative feature introduced in Assignment 4 is the combined project discovery system.
+
+Visitors can simultaneously:
+
+- Search project names and descriptions
+- Filter projects by category
+- Sort projects alphabetically
+
+The application updates the displayed projects dynamically without refreshing the page.
+
+Additional improvements include technical skill cards, repository language badges, hero navigation buttons, and back-to-top navigation.
+
+These features improve usability while preserving the original portfolio design.
+
+## 13. User Guide
+
+### Accessing the Website
+
+Open the live website URL using a modern web browser.
+
+### Changing the Theme
+
+Click the theme button in the navigation bar.
+
+The selected appearance is automatically saved.
+
+### Exploring Technical Skills
+
+Navigate to the Skills section to view categorized technologies.
+
+### Searching Projects
+
+Enter a keyword in the search field.
+
+Matching project cards appear automatically.
+
+### Filtering and Sorting
+
+Select a project category and choose a sorting option.
+
+Search, filtering, and sorting can be used together.
+
+### Viewing GitHub Repositories
+
+Navigate to the GitHub section and select View on GitHub to open a repository.
+
+### Using the Contact Form
+
+Enter a name, email address, and message.
+
+Click Check Message to validate the information.
+
+The form does not transmit messages.
+
+### Returning to the Top
+
+Click the floating arrow that appears after scrolling down.
+
+## 14. Limitations
+
+- The application does not include a backend server.
 - The contact form does not send real emails.
-- The portfolio currently contains two manually defined project ideas.
-- The GitHub API requires an internet connection.
-- GitHub API requests may be affected by rate limits or network failures.
-- Project filtering and sorting preferences are not saved after refreshing.
-- The application does not use a backend server.
+- GitHub API availability depends on internet connectivity.
+- API requests may be affected by rate limits.
+- Search and sorting preferences are not permanently stored.
+- The manually defined project cards represent project ideas.
+- Testing was limited to the reported browsers and responsive checks.
+- API failure scenarios and all possible input edge cases were not exhaustively tested.
 
-## 13. Future Improvements
+## 15. Future Improvements
 
-Possible improvements include:
+Potential future improvements include:
 
-- Adding more completed software projects
-- Implementing project search functionality
 - Connecting the contact form to a backend service
-- Adding additional project categories
-- Implementing more advanced sorting options
-- Deploying the portfolio using GitHub Pages
+- Adding completed software projects
+- Introducing additional project categories
+- Adding advanced project sorting options
+- Providing a downloadable resume
+- Expanding the portfolio with professional experience
+- Implementing additional automated tests
 
-## 14. Conclusion
+## 16. Conclusion
 
-Assignment 3 demonstrates the integration of HTML, CSS, JavaScript, and an external REST API to create a responsive and interactive personal portfolio.
+Assignment 4 brings together the concepts learned throughout the Web Engineering course into a complete, responsive, interactive, and publicly deployed personal portfolio.
 
-The main technical concepts include DOM manipulation, event handling, asynchronous API requests, filtering and sorting algorithms, localStorage, input validation, error handling, and responsive design.
+The project demonstrates semantic HTML, CSS styling, responsive design, JavaScript programming, DOM manipulation, state management, external API integration, input validation, error handling, accessibility, performance optimization, and deployment.
+
+The final website provides a foundation that can be expanded as my academic and professional experience develops.

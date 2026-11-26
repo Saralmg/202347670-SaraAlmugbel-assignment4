@@ -1,127 +1,157 @@
 
-# Personal Portfolio Website – Assignment 3
+# Personal Portfolio Website – Assignment 4
 
 **Student:** Sara Almugbel  
 **Student ID:** 202347670  
-**University:** King Fahd University of Petroleum & Minerals (KFUPM)
+**University:** King Fahd University of Petroleum & Minerals (KFUPM)  
+**Course:** SWE 363 – Web Engineering
 
 ## Project Description
 
-This project is an enhanced version of my personal portfolio website developed for Assignments 1 and 2.
+This project is the final version of my personal portfolio website developed throughout Assignments 1, 2, 3, and 4.
 
-The purpose of Assignment 3 is to extend the website with advanced JavaScript functionality, external API integration, improved form validation, project sorting, and state persistence.
+Assignment 4 focuses on delivering a complete, professional, responsive, and publicly accessible personal web application that demonstrates the technical skills acquired throughout the Web Engineering course.
 
-The website introduces me as a Software Engineering student, displays my project ideas, retrieves public GitHub repositories, and includes an interactive contact form.
+The website introduces me as a Software Engineering student, showcases my technical skills and project ideas, retrieves public GitHub repositories, and provides interactive features that improve the user experience.
+
+## Live Website
+
+The portfolio is publicly deployed using GitHub Pages.
+
+[Visit My Portfolio](https://saralmg.github.io/202347670-SaraAlmugbel-assignment4/)
 
 ## Technologies Used
 
-- HTML5 – Website structure and semantic elements
+- HTML5 – Semantic website structure
 - CSS3 – Styling, responsive layouts, and animations
 - JavaScript (ES6+) – Interactive functionality and DOM manipulation
-- Fetch API – Retrieving external data asynchronously
+- Fetch API – Asynchronous external data retrieval
 - GitHub REST API – Displaying public repositories
-- localStorage – Saving the selected theme
-- Git and GitHub – Version control and repository hosting
-- ChatGPT – AI-assisted development, explanations, and debugging
+- localStorage – Saving theme preferences
+- Git and GitHub – Version control
+- GitHub Pages – Website deployment
+- Google PageSpeed Insights – Performance testing
+- ChatGPT – AI-assisted development and documentation
 
-## Interactive Features
+## Website Features
 
-### 1. Dark and Light Mode
+### 1. Professional Introduction
 
-Users can switch between dark and light themes.
+The homepage introduces my academic background, interests, and professional goals.
 
-The selected theme is saved using localStorage, allowing the website to remember the user's preference after refreshing the page.
+Navigation buttons allow visitors to access the Projects and Contact sections directly.
 
-### 2. Dynamic Project Filtering
+### 2. Technical Skills Section
 
-The Projects section contains three filter buttons:
+The website presents my technical skills in four categories:
+
+- Front-End Development
+- Programming
+- Back-End and Databases
+- Development Tools
+
+Skills are displayed using responsive cards and technology badges.
+
+### 3. Dark and Light Mode
+
+Visitors can switch between dark and light themes.
+
+The selected theme is stored using localStorage and restored after refreshing the website.
+
+### 4. Dynamic Project Filtering
+
+Visitors can filter project ideas using three categories:
 
 - All
 - Productivity
 - Campus
 
-JavaScript displays project cards based on the selected category.
+A status message displays the number of matching projects.
 
-A status message informs users how many projects are currently displayed.
+### 5. Project Sorting
 
-### 3. Project Sorting
-
-Users can sort project ideas using a dropdown menu.
-
-Available options:
+Visitors can arrange project ideas using three sorting options:
 
 - Default Order
 - Name (A–Z)
 - Name (Z–A)
 
-JavaScript uses the `sort()` method and `localeCompare()` to arrange projects alphabetically.
+JavaScript uses sort() and localeCompare() to arrange projects alphabetically.
 
-Filtering and sorting work together, allowing users to sort projects while a category filter is active.
+### 6. Live Project Search
 
-### 4. GitHub API Integration
+Assignment 4 introduces a live search feature that allows visitors to search project names and descriptions.
 
-The website connects to the GitHub REST API to retrieve public repositories from my GitHub account.
+Search results update immediately as the visitor types.
+
+The search feature works together with category filtering and alphabetical sorting through a shared JavaScript function.
+
+If no matching projects are found, the website displays a helpful message.
+
+### 7. GitHub API Integration
+
+The website retrieves public repositories from my GitHub account using the GitHub REST API.
 
 API endpoint:
 
 https://api.github.com/users/Saralmg/repos?sort=updated&per_page=6
 
-JavaScript uses `async/await` and `fetch()` to request repository information.
-
 Each repository card displays:
 
 - Repository name
-- Repository description, if available
-- A link to view the repository on GitHub
+- Repository description
+- Primary programming language
+- Link to the GitHub repository
 
-The website also handles API errors and displays a message if repositories cannot be loaded.
+The website handles API failures and displays appropriate loading, empty-result, and error messages.
 
-### 5. Advanced Contact Form Validation
+### 8. Advanced Contact Form Validation
 
 The contact form accepts a name, email address, and message.
 
-JavaScript validates the following conditions:
+Validation rules include:
 
 - All fields must be completed.
-- The name must contain at least 2 characters.
-- The email must follow a valid basic email format.
-- The message must contain at least 10 characters.
-- Input values must not exceed the maximum allowed lengths.
+- Names must contain at least two characters.
+- Email addresses must follow a valid basic format.
+- Messages must contain at least ten characters.
+- Input values must not exceed maximum field lengths.
 
-The website displays clear error messages when validation fails and a confirmation message when validation succeeds.
+The website displays helpful error messages and a confirmation message when validation succeeds.
 
-The form is a demonstration and does not send real emails.
+The form is a client-side demonstration and does not send real emails.
 
-### 6. Animations and Transitions
+### 9. Back-to-Top Button
 
-The website includes:
+A floating navigation button appears when the visitor scrolls down the page.
 
-- Smooth scrolling between sections
-- Hover effects on project cards
-- Button hover animations
-- Smooth transitions between light and dark themes
+Clicking the button returns the visitor to the top of the website.
 
-The CSS also respects reduced-motion accessibility preferences.
+The feature respects reduced-motion accessibility preferences.
 
-### 7. Responsive Design
+### 10. Responsive Design and Accessibility
 
-CSS media queries and flexible layouts allow the website to adapt to different screen sizes.
+The website uses CSS Grid, Flexbox, and media queries to support different screen sizes.
 
-On smaller screens, the project grid changes from two columns to one column.
+Accessibility improvements include:
 
-Navigation and sorting controls also adjust to fit smaller displays.
+- Semantic HTML elements
+- Accessible form labels
+- Keyboard focus indicators
+- ARIA status messages
+- Accessible button descriptions
+- Reduced-motion support
+- Responsive navigation and project layouts
 
 ## Project Structure
 
 ```text
-202347670-SaraAlmugbel-assignment3/
+202347670-SaraAlmugbel-assignment4/
 ├── index.html
 ├── css/
 │   └── styles.css
 ├── js/
 │   └── script.js
-├── assets/
-│   └── images/
 ├── docs/
 │   ├── ai-usage-report.md
 │   └── technical-documentation.md
@@ -129,67 +159,135 @@ Navigation and sorting controls also adjust to fit smaller displays.
 └── .gitignore
 ```
 
+Presentation materials will be added before final submission.
+
 ## How to Run the Website Locally
 
-1. Download or clone this repository.
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Saralmg/202347670-SaraAlmugbel-assignment4.git
+```
+
 2. Open the project folder in Visual Studio Code.
-3. Locate the `index.html` file.
-4. Open `index.html` in Safari, Chrome, or another modern web browser.
-5. Test the project filters, sorting dropdown, theme button, GitHub projects, and contact form.
 
-No additional packages or installations are required.
+3. Locate the index.html file.
 
-An internet connection is required to load repositories from the GitHub API.
+4. Open index.html in Safari, Google Chrome, or another modern browser.
+
+5. Explore the website and test its interactive features.
+
+No additional packages, frameworks, or installations are required.
+
+An internet connection is required to retrieve GitHub repositories.
+
+## User Guide
+
+| Feature | Instructions |
+|---|---|
+| Navigation | Click a navigation link to visit a section. |
+| Theme | Click the Dark Mode or Light Mode button. |
+| Technical Skills | Browse the categorized skill cards. |
+| Search | Enter a project name or description keyword. |
+| Filtering | Select All, Productivity, or Campus. |
+| Sorting | Select an option from the sorting dropdown. |
+| GitHub Projects | Click View on GitHub to open a repository. |
+| Contact Form | Enter your information and click Check Message. |
+| Back to Top | Click the floating arrow after scrolling down. |
 
 ## Testing
 
-The following features were manually tested:
+The following functionality was manually tested:
 
-- Dark/light theme switching
+- Dark and light mode switching
 - Theme persistence after refreshing
-- Project filtering by category
+- Live project search
+- Search with no matching results
+- Project filtering
 - Alphabetical sorting
-- Filtering and sorting together
-- Contact form validation with valid input
-- GitHub API repository display
+- Combined project search, filtering, and sorting
+- Technical skills display
+- Hero navigation buttons
+- GitHub repository display
+- Repository programming language badges
+- Contact form validation
+- Back-to-top navigation
+- Responsive layouts
 
-Additional edge cases and browser compatibility should be verified before final submission.
+The website was tested using Safari and Google Chrome.
+
+## Performance Evaluation
+
+Google PageSpeed Insights was used to evaluate the deployed website on November 26, 2026.
+
+| Category | Mobile | Desktop |
+|---|---:|---:|
+| Performance | 100 | 100 |
+| Accessibility | 100 | 100 |
+| Best Practices | 100 | 100 |
+| SEO | 100 | 100 |
+
+These results represent the reported laboratory test scores at the time of testing. Scores may vary under different testing conditions.
 
 ## Performance and Code Quality
 
-The project uses plain JavaScript without requiring additional frontend libraries.
+The website uses several techniques to improve efficiency:
 
-Project cards are rearranged using existing DOM elements instead of being recreated whenever sorting changes.
+- Vanilla JavaScript without unnecessary frontend libraries
+- Deferred JavaScript loading
+- Reuse of existing project card elements
+- Shared logic for searching, filtering, and sorting
+- Asynchronous GitHub API requests
+- Limited API results
+- DocumentFragment for grouped DOM insertion
+- CSS variables for consistent theme management
+- Organized and commented source code
 
-The original project order is preserved in an array so that users can return to the default order.
+## Deployment
 
-GitHub repository cards are generated dynamically after the API response is received.
+The website is hosted using GitHub Pages.
 
-The code is divided into clearly labeled sections to improve readability and maintainability.
+Deployment configuration:
+
+- Source: Deploy from a branch
+- Branch: main
+- Folder: / (root)
+
+The website can be updated by pushing changes to the main branch.
 
 ## AI Assistance
 
-ChatGPT was used during development to assist with:
+ChatGPT was used during Assignment 4 to assist with:
 
-- Planning Assignment 3 features
-- Implementing GitHub API integration
-- Developing project sorting functionality
-- Combining project filtering and sorting
-- Improving contact form validation
-- Debugging HTML, CSS, and JavaScript issues
-- Explaining code and updating documentation
+- Understanding assignment requirements
+- Planning new portfolio features
+- Generating HTML, CSS, and JavaScript improvements
+- Implementing live project search
+- Creating the technical skills section
+- Improving navigation and accessibility
+- Improving GitHub repository rendering
+- Providing deployment and testing guidance
+- Preparing project documentation
 
-AI-generated suggestions were reviewed and manually tested.
+AI assistance included substantial code generation and documentation drafting. The suggested code was integrated into the existing portfolio and manually tested.
 
-For more information, see:
+Detailed AI usage information is available in:
 
 [AI Usage Report](docs/ai-usage-report.md)
 
 ## Technical Documentation
 
-Detailed explanations of the website architecture, JavaScript functionality, API integration, and testing are available in:
+Detailed explanations of the application architecture, interactive features, API integration, testing, and deployment are available in:
 
 [Technical Documentation](docs/technical-documentation.md)
+
+## Current Limitations
+
+- The contact form does not send real messages.
+- The portfolio does not use a backend server.
+- GitHub repository retrieval depends on internet connectivity and API availability.
+- Search, filtering, and sorting preferences are not saved after refreshing.
+- The manually defined project ideas represent proposed applications rather than completed products.
 
 ## Future Improvements
 
@@ -197,9 +295,10 @@ Potential improvements include:
 
 - Adding more completed software projects
 - Connecting the contact form to a backend service
-- Adding project search functionality
-- Introducing additional sorting options
-- Deploying the portfolio using GitHub Pages
+- Adding additional project categories
+- Introducing more advanced sorting options
+- Adding a downloadable professional resume
+- Expanding the portfolio as my technical experience develops
 
 ## Author
 

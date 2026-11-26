@@ -1,287 +1,310 @@
 
-# AI Usage Report – Assignment 3
+# AI Usage Report – Assignment 4
 
 **Student:** Sara Almugbel  
 **Student ID:** 202347670  
 **Course:** SWE 363 – Web Engineering  
-**Project:** Advanced Interactive Personal Portfolio
+**Project:** Personal Portfolio Web Application
 
 ## 1. Introduction
 
-AI-assisted tools were used during the development of Assignment 3 to extend my existing personal portfolio website from Assignments 1 and 2.
+AI-assisted tools were used during Assignment 4 to extend and finalize my existing personal portfolio website developed throughout Assignments 1, 2, and 3.
 
-The main objective was to introduce advanced JavaScript functionality, integrate an external API, improve form validation, and enhance the user experience.
+The objective was to deliver a complete, professional, responsive, interactive, and publicly accessible web application.
 
-ChatGPT assisted with planning, implementation, debugging, code explanations, testing guidance, and documentation.
+ChatGPT assisted with requirement analysis, feature planning, code generation, technical explanations, deployment guidance, testing guidance, and documentation.
 
 ## 2. AI Tool Used
 
 **Tool:** ChatGPT (OpenAI)
 
-**Purpose:**
+ChatGPT was used for:
 
-- Understanding Assignment 3 requirements
-- Planning advanced interactive features
+- Understanding Assignment 4 requirements
+- Planning the development workflow
+- Providing Git and GitHub commands
+- Selecting new portfolio features
 - Generating HTML, CSS, and JavaScript code
-- Implementing GitHub API integration
-- Developing project sorting functionality
-- Combining filtering and sorting
-- Improving contact form validation
-- Troubleshooting implementation problems
-- Explaining JavaScript concepts
-- Preparing assignment documentation
+- Implementing live project search
+- Improving website navigation
+- Improving repository rendering
+- Providing testing instructions
+- Explaining GitHub Pages deployment
+- Preparing project documentation
+
+The existing Assignment 3 portfolio also contained previously AI-assisted code.
 
 ## 3. How AI Was Used
 
-### 3.1 Planning and Feature Selection
+### 3.1 Requirement Analysis and Planning
 
-I used ChatGPT to discuss Assignment 3 requirements and identify suitable features for my existing portfolio.
+I provided the Assignment 4 instructions to ChatGPT.
 
-The selected features included:
+ChatGPT helped identify the required development, deployment, documentation, testing, presentation, and AI evidence tasks.
 
-- GitHub API integration
-- Alphabetical project sorting
-- Combined project filtering and sorting
-- Advanced contact form validation
-- Theme persistence using localStorage
-- Responsive design improvements
+The suggested workflow allowed me to build upon Assignment 3 rather than create an entirely new website.
 
-These features were selected to extend the functionality of the existing website while preserving its original design.
+### 3.2 Repository Setup
 
-### 3.2 HTML Improvements
+ChatGPT provided Git commands to:
 
-ChatGPT assisted with modifying the HTML structure to support the new features.
+- Clone my Assignment 3 repository
+- Create a separate local Assignment 4 project folder
+- Change the Git remote URL
+- Verify the repository connection
+- Push the existing portfolio to the new repository
 
-Examples include:
+I executed these commands in the Visual Studio Code terminal and checked the terminal output.
 
-- Adding a GitHub Projects section
-- Adding a sorting dropdown
-- Adding a dedicated project container ID
-- Organizing project cards inside the correct container
-- Adding navigation to the GitHub section
-- Adding maximum-length attributes to contact form fields
+### 3.3 HTML Improvements
 
-The final HTML structure separates manually defined project ideas from dynamically loaded GitHub repositories.
+ChatGPT generated an updated HTML file containing:
 
-### 3.3 CSS Improvements
+- A technical skills section
+- Hero navigation buttons
+- A live project search field
+- Updated navigation links
+- A back-to-top button
 
-ChatGPT assisted with CSS improvements, including:
+The existing project ideas, contact form, GitHub section, and portfolio content were preserved.
 
-- Styling the sorting dropdown
-- Styling GitHub repository cards
-- Maintaining the original burgundy color scheme
-- Improving responsive layouts
-- Ensuring filtered project cards are hidden
-- Preserving hover effects and theme transitions
+### 3.4 CSS Improvements
 
-During debugging, I reviewed the project card styling and corrected CSS structure problems.
+ChatGPT generated additional CSS rules for:
 
-The final stylesheet includes a rule that hides filtered-out project cards.
+- Technical skill cards
+- Technology badges
+- Hero navigation buttons
+- Search input styling
+- Repository language badges
+- Back-to-top button
+- Mobile layout improvements
+- Reduced-motion support
 
-### 3.4 JavaScript Implementation
+The existing burgundy color scheme and theme variables were retained.
 
-ChatGPT assisted with implementing the main JavaScript features.
+### 3.5 JavaScript Improvements
 
-**GitHub API Integration:**
+ChatGPT generated an updated JavaScript file that preserved the existing Assignment 3 functionality while introducing new features.
 
-An asynchronous function uses fetch() and async/await to retrieve public repositories from the GitHub REST API.
+The main improvements were:
 
-The repository information is displayed dynamically using DOM manipulation.
+- Live project search
+- Combined searching, filtering, and sorting
+- Repository programming language information
+- DocumentFragment for grouped DOM insertion
+- Back-to-top button functionality
 
-**Project Sorting:**
+The generated code was copied into Visual Studio Code and manually tested.
 
-JavaScript uses arrays, sort(), and localeCompare() to arrange project cards alphabetically.
+### 3.6 Performance and Testing Guidance
 
-The original project order is preserved so users can return to the default order.
+ChatGPT provided a functional testing checklist covering the new and existing website features.
 
-**Combined Filtering and Sorting:**
+I performed the tests and confirmed that the tested features worked.
 
-A shared updateProjects() function handles both features.
+ChatGPT also recommended Google PageSpeed Insights for evaluating the deployed website.
 
-The function sorts the project cards, applies the selected category filter, and updates the number of visible projects.
+I ran mobile and desktop tests and reported the results.
 
-**Advanced Contact Form Validation:**
+### 3.7 Deployment Guidance
 
-JavaScript validates required fields, minimum lengths, maximum lengths, and basic email formatting.
+ChatGPT provided instructions for deploying the website using GitHub Pages.
 
-The form displays error messages or a success confirmation.
+I configured deployment from the main branch and root directory.
 
-**Theme Persistence:**
+I opened the deployed website and verified that it was accessible.
 
-The existing dark/light mode feature was preserved.
+### 3.8 Documentation Assistance
 
-The selected theme is stored using localStorage and restored after refreshing the page.
+ChatGPT assisted with drafting updated versions of:
 
-## 4. Debugging and Problem Solving
+- README.md
+- docs/technical-documentation.md
+- docs/ai-usage-report.md
 
-Several issues occurred during Assignment 3 development.
+The documentation describes the implemented features, architecture, testing, performance results, deployment process, user guide, and current limitations.
 
-### 4.1 Project Sorting Did Not Initially Work
+## 4. Benefits of AI Assistance
 
-After adding the sorting dropdown and JavaScript logic, selecting alphabetical sorting did not rearrange the project cards as expected.
+AI assistance provided several benefits:
 
-I used ChatGPT to investigate the problem.
+- Reduced time spent planning the assignment
+- Helped identify suitable new features
+- Provided explanations of JavaScript concepts
+- Helped organize code into logical sections
+- Supported the deployment process
+- Provided a structured testing workflow
+- Improved the organization of project documentation
 
-The debugging process included:
+## 5. Challenges and Limitations
 
-- Checking the sorting dropdown
-- Inspecting JavaScript behavior in Safari
-- Reviewing the HTML project container
-- Checking the project card structure
+AI-generated suggestions require human review and verification.
 
-After correcting the HTML structure, alphabetical sorting worked.
+Potential challenges include:
 
-### 4.2 Project Filtering Displayed Both Cards
+- Generated code may contain errors or compatibility issues.
+- Suggested features may not match the existing project structure.
+- Documentation may contain claims that require verification.
+- Generated solutions may be more complicated than necessary.
+- AI cannot replace understanding of the submitted code.
 
-After sorting was fixed, the Campus filter still displayed both project cards.
+For this assignment, I used the existing portfolio as context and requested improvements that preserved its original functionality and design.
 
-ChatGPT suggested reviewing the project container and testing the filtering logic.
+I manually tested the integrated code rather than assuming that the generated output was correct.
 
-Several attempts were made to correct the problem.
+## 6. Learning Outcomes
 
-The issue was resolved after replacing the HTML, CSS, and JavaScript with coordinated versions.
+The technical concepts explored during Assignment 4 include:
 
-The final JavaScript uses one updateProjects() function for both filtering and sorting.
+| Concept | Purpose |
+|---|---|
+| input event | Updates search results as the visitor types |
+| trim() | Removes unnecessary whitespace |
+| toLowerCase() | Supports case-insensitive searching |
+| includes() | Checks whether project text contains a keyword |
+| Logical AND operator | Combines category and search conditions |
+| DocumentFragment | Groups DOM insertion operations |
+| window.scrollY | Determines the current scroll position |
+| window.scrollTo() | Returns the visitor to the top of the page |
+| Passive event listeners | Supports efficient scroll event handling |
+| matchMedia() | Checks reduced-motion preferences |
+| Git remote | Connects the local project to a repository |
+| GitHub Pages | Publishes a static website |
+| PageSpeed Insights | Evaluates website performance and accessibility |
 
-The CSS explicitly hides cards with the hidden attribute.
+Assignment 4 also provided practical experience with integrating multiple interactive features into an existing application.
 
-### 4.3 CSS Structure Problems
+## 7. Human Review and Verification
 
-During editing, the project card CSS selector was accidentally moved.
+I requested that the existing portfolio functionality and visual identity be preserved.
 
-ChatGPT helped identify the misplaced selector and restore the correct CSS rule.
+During implementation, I:
 
-### 4.4 Website Display Problem
+- Created the Assignment 4 GitHub repository
+- Cloned the existing portfolio
+- Configured the new Git remote
+- Integrated the AI-generated HTML and JavaScript
+- Added the suggested CSS improvements
+- Saved the files in Visual Studio Code
+- Tested the website functionality
+- Committed and pushed the updated code
+- Configured GitHub Pages deployment
+- Verified the deployed website
+- Ran PageSpeed Insights tests
+- Tested Safari and Google Chrome
+- Checked responsive layouts
 
-At one point, the portfolio appeared as a blank gray page in Safari.
+AI assistance included substantial code generation. Manual testing was used to verify the integrated functionality.
 
-I reopened the local HTML file and confirmed that the website displayed again.
+Any additional independent code modifications must be documented accurately before submission.
 
-### 4.5 Final Code Revision
+## 8. Testing Results
 
-After repeated debugging attempts, I requested complete corrected versions of the three main files:
+The following features were manually tested:
 
-- index.html
-- css/styles.css
-- js/script.js
+| Feature | Result |
+|---|---|
+| Technical skills section | Passed |
+| Hero navigation buttons | Passed |
+| Live project search | Passed |
+| Empty search results | Passed |
+| Clearing the search | Passed |
+| Project filtering | Passed |
+| Project sorting | Passed |
+| GitHub language badges | Passed |
+| Dark mode and persistence | Passed |
+| Back-to-top navigation | Passed |
+| Contact form validation | Passed |
+| Responsive layout | Passed |
 
-ChatGPT generated complete replacement code for each file.
+### Performance Results
 
-I copied the code into Visual Studio Code, saved the files, and manually tested the functionality.
+Google PageSpeed Insights was used on November 26, 2026.
 
-This approach helped ensure the HTML structure, CSS rules, and JavaScript logic were consistent.
+| Category | Mobile | Desktop |
+|---|---:|---:|
+| Performance | 100 | 100 |
+| Accessibility | 100 | 100 |
+| Best Practices | 100 | 100 |
+| SEO | 100 | 100 |
 
-## 5. Understanding the AI Suggestions
+These are the reported laboratory test results.
 
-The main technical concepts used in Assignment 3 include:
-
-- addEventListener(): Responds to user interactions.
-- querySelectorAll(): Selects matching HTML elements.
-- dataset: Reads custom data attributes.
-- classList.toggle(): Changes CSS classes.
-- localStorage: Stores theme preferences.
-- preventDefault(): Prevents default form submission.
-- sort(): Sorts JavaScript arrays.
-- localeCompare(): Compares strings alphabetically.
-- appendChild(): Moves existing DOM elements.
-- fetch(): Requests external API data.
-- async/await: Handles asynchronous operations.
-- try/catch: Handles errors.
-- textContent: Inserts text into HTML elements safely.
-
-These concepts demonstrate how JavaScript can be used to build an interactive website that retrieves and processes external information.
-
-## 6. Human Review and Modifications
-
-I integrated the AI-assisted code into my project using Visual Studio Code.
-
-I reviewed the website in Safari and tested its interactive features.
-
-During development, I:
-
-- Copied and integrated the suggested code
-- Corrected project structure issues
-- Checked the project filters
-- Tested alphabetical sorting
-- Tested filtering and sorting together
-- Verified contact form validation
-- Confirmed that GitHub repositories appeared
-- Tested dark mode persistence after refreshing
-- Updated the project documentation
-
-I also retained the Projects section heading:
-
-"My Project Ideas & Future Innovations"
-
-This heading clarifies that the manually defined projects are ideas rather than completed applications.
-
-## 7. Testing and Verification
-
-The following functionality was manually verified:
-
-| Feature | Expected Behavior | Result |
-|---|---|---|
-| Dark mode | Switch to dark appearance | Passed |
-| Theme persistence | Remember theme after refresh | Passed |
-| Campus filter | Show Campus Connect only | Passed |
-| Productivity filter | Show Smart Study Planner only | Passed |
-| All filter | Display both projects | Passed |
-| Alphabetical sorting | Rearrange projects by name | Passed |
-| Combined filtering and sorting | Both features operate together | Passed |
-| Valid contact form | Display success confirmation | Passed |
-| GitHub API | Display public repositories | Passed |
-
-Additional edge cases and API failure scenarios have not been fully verified.
-
-## 8. Responsible AI Usage
+## 9. Responsible AI Usage
 
 ChatGPT was used as a development and learning assistant.
 
-AI-generated code and documentation suggestions were integrated into the project and reviewed through manual testing.
+AI assistance included feature planning, substantial code generation, technical explanations, deployment guidance, testing guidance, and documentation drafting.
 
-The AI assistance included substantial code generation, debugging, and documentation drafting.
+The original AI-generated outputs and complete, unedited conversations must be preserved in the accompanying AI evidence.
 
-This report identifies the major areas where AI contributed to the development process.
+The final application should be reviewed to ensure that I understand and can explain its implementation.
 
-The accompanying evidence must contain the complete, unedited AI conversations and required intermediate artifacts.
+AI assistance must also be acknowledged in relevant Git commit messages.
 
-## 9. AI Usage Log
+## 10. AI Usage Log
 
-The following log summarizes AI assistance during Assignment 3.
+The following preliminary log records the known AI assistance for Assignment 4.
 
-| Date | AI Tool | Purpose | Files Affected | Human Review and Modifications |
-|---|---|---|---|---|
-| November 20, 2026 | ChatGPT (OpenAI) | Plan Assignment 3 and identify advanced features | Project planning | Selected GitHub API integration, sorting, and improved validation |
-| November 20, 2026 | ChatGPT (OpenAI) | Implement GitHub API integration | index.html, js/script.js | Added the code and verified that repositories appeared |
-| November 20, 2026 | ChatGPT (OpenAI) | Implement alphabetical project sorting | index.html, js/script.js | Tested the sorting dropdown and investigated incorrect ordering |
-| November 20, 2026 | ChatGPT (OpenAI) | Debug project filtering and HTML structure | index.html, css/styles.css, js/script.js | Inspected project containers and tested filtering behavior |
-| November 20, 2026 | ChatGPT (OpenAI) | Rewrite and correct the three main website files | index.html, css/styles.css, js/script.js | Replaced the files in VS Code and tested the website |
-| November 20, 2026 | ChatGPT (OpenAI) | Update README and technical documentation | README.md, docs/technical-documentation.md | Copied the updated documentation into the project |
-| November 20, 2026 | ChatGPT (OpenAI) | Prepare Assignment 3 AI usage report | docs/ai-usage-report.md | Review the report and attach the required AI evidence before submission |
+| ID | Tool (Model) | Date | Purpose | Files Affected | Human Changes and Verification |
+|---|---|---|---|---|---|
+| C01 | ChatGPT (OpenAI; GPT-6.2 for the documentation response) | Nov 26, 2026 | Requirement analysis, repository setup, development, deployment, testing guidance, and documentation | Website and documentation files | Executed Git commands, integrated generated code, manually tested functionality, deployed the website, and ran performance tests |
+| A01 | ChatGPT (OpenAI) | Nov 26, 2026 | Generate updated HTML structure | index.html | Integrated the generated HTML and verified the new sections and navigation |
+| A02 | ChatGPT (OpenAI) | Nov 26, 2026 | Generate additional CSS rules | css/styles.css | Appended the CSS to the existing stylesheet and checked the appearance and responsive layout |
+| A03 | ChatGPT (OpenAI) | Nov 26, 2026 | Generate updated JavaScript | js/script.js | Integrated the code and tested search, filtering, sorting, theme persistence, API display, and navigation |
+| A04 | ChatGPT (GPT-6.2) | Nov 26, 2026 | Draft updated README | README.md | Pending final review |
+| A05 | ChatGPT (GPT-6.2) | Nov 26, 2026 | Draft technical documentation and user guide | docs/technical-documentation.md | Pending final review |
+| A06 | ChatGPT (GPT-6.2) | Nov 26, 2026 | Draft AI usage report | docs/ai-usage-report.md | Pending evidence verification and final review |
 
-The entries above summarize the known development activities. They do not replace the complete conversation evidence required by the assignment.
+This log must be updated to include any additional AI conversations or artifacts before submission.
 
-## 10. AI Evidence
+The IDs must correspond to the actual files included in the AI Evidence ZIP.
 
-The AI evidence submission should include:
+## 11. AI Usage in the Presentation
 
-- Complete, unedited ChatGPT conversations used for Assignment 3
-- AI-generated code and intermediate artifacts, where required
-- Evidence of debugging and code revisions
-- The final AI usage report
-- Any additional materials specified by the assignment instructions
+Presentation-related AI usage has not yet been finalized.
 
-The evidence should be organized and included in the required submission format.
+This section must be updated before submission to disclose any AI assistance used for:
 
-## 11. AI Usage Declaration
+- Presentation slides
+- Presentation scripts
+- Demonstration planning
+- Voice-over generation
+- Video editing
+- Other presentation materials
 
-I acknowledge that ChatGPT was used extensively during the development of Assignment 3, including code generation, debugging, explanations, and documentation drafting.
+Any related AI conversations and intermediate artifacts must also be included in the evidence.
 
-I understand that all AI assistance must be disclosed accurately and supported by the evidence required by the instructor.
+## 12. AI Evidence
 
-Before submission, I will verify that the evidence is complete and unedited and that I can explain the submitted code.
+The AI evidence must be submitted separately through Blackboard using the filename:
+
+202347670-SaraAlmugbel-assignment4-ai-evidence.zip
+
+Required structure:
+
+```text
+202347670-SaraAlmugbel-assignment4-ai-evidence/
+├── conversations/
+└── artifacts/
+```
+
+The conversations folder must contain complete, unedited AI conversations.
+
+The artifacts folder must contain original AI-generated outputs before human edits.
+
+The evidence ZIP and conversation logs must not be committed to the public GitHub repository.
+
+The evidence must be checked against the final AI usage log before submission.
+
+## 13. AI Usage Declaration
+
+**Pending verification – do not finalize this declaration until all AI usage and evidence have been checked.**
+
+I declare that this report and the attached evidence document all of my AI use in this assignment, with complete and unedited conversations, and that I understand and can explain all the code I submitted. I understand that undeclared AI use or a false declaration will be treated as plagiarism according to KFUPM regulations.
 
 **Name:** Sara Almugbel  
 **Student ID:** 202347670  
-**Date:** November 20, 2026  
-**Signature:** [Sign after verifying the declaration and evidence]
+**Date:** [Enter final verification date]  
+**Signature:** [Sign after verifying all AI evidence]
